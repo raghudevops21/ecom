@@ -1,14 +1,14 @@
-pipeline{
+pipeline {
           agent any
-    stages{
+    stages {
         stage('printing hostname') {
-            steps{
+            steps {
                 sh 'hostname'
                 sh 'hostname -i'
 	}
 	   }
                 stage('build') {
-                steps{
+                steps {
                     withMaven(maven: 'maven') {
                         sh 'mvn clean install'
 		
