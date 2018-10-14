@@ -1,17 +1,16 @@
 pipeline {
-          agent any
+    agent any
     stages {
-        stage('printing hostname') {
+      stage ('checkout') {
+      steps {
+         checkout scm
+                     }
+      }
+        stage ('Build') {
             steps {
-                sh 'hostname'
-                sh 'hostname -i'
-	}
-	   }
-                stage('build') {
-                steps {
-                    withMaven(maven: 'maven') {
-                        sh 'mvn clean install'
-		
-		}                        
-		}
-}
+                sh 'mvn install' 
+        }
+           }
+       
+   }
+} 
